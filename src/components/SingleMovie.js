@@ -66,7 +66,7 @@ class SingleMovie extends Component {
           <div className="col-lg-12">
             <div className="row">
               <div className="col-lg-10">
-                <h1 className="mt-4">{this.state.movie.original_title}</h1>
+                <h1 className="mt-4 movie-title">{this.state.movie.original_title}</h1>
               </div>
               <div className="col-lg-2 mt-4">
                 <i className="fa fa-2x fa-star text-warning"></i>{" "}
@@ -78,23 +78,24 @@ class SingleMovie extends Component {
               </div>
             </div>
             <p className="lead">
-              <a href="/">
-                {this.state.movie.genres
-                  ? this.state.movie.genres.map(genre => (
-                      <span className="badge badge-primary ml-1" key={genre.id}>
-                        {genre.name} <span> </span>
-                      </span>
-                    ))
-                  : ""}
-              </a>{" "}
+              {this.state.movie.genres
+                ? this.state.movie.genres.map(genre => (
+                    <span className="badge badge-primary ml-1 tag" key={genre.id}>
+                      {genre.name} <span> </span>
+                    </span>
+                  ))
+                : ""}{" "}
             </p>
-            <hr />
-            <p>
-              {this.state.movie.adult ? "R" : "PG"} | {"  "}
-              {this.state.movie.status} | {"  "}
-              {this.yy_date_format(this.state.movie.release_date)}
-            </p>
-            <hr />
+            <table className="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>{this.state.movie.adult ? "R" : "PG"}</td>
+                  <td>{this.state.movie.runtime} minutes</td>
+                  <td>{this.state.movie.status}</td>
+                  <td>{this.yy_date_format(this.state.movie.release_date)}</td>
+                </tr>
+              </tbody>
+            </table>
             <img
               className="img-fluid rounded"
               src={`https://image.tmdb.org/t/p/original/${this.state.movie.backdrop_path}`}

@@ -4,16 +4,18 @@ class Casts extends Component {
   render() {
     return (
       <>
-        <header className="bg-primary text-center py-5 mb-4">
+        <header className="yy-bg-primary text-center py-5 mb-4">
           <div className="container">
-            <h1 className="font-weight-light text-white">Meet the Casts</h1>
+            <h1 className="font-weight-light yy-hero-header-text">
+              Meet the Casts
+            </h1>
           </div>
         </header>
 
         <div className="container">
           <div className="row">
             {this.props.casts
-              .filter((item, index) => index < 9)
+              .filter((item, index) => index < 8)
               .map(cast => (
                 <div className="col-xl-3 col-md-4 mb-4" key={cast.id}>
                   <div className="card border-0 shadow">
