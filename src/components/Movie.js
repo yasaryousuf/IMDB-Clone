@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export class Movie extends Component {
   render() {
-    console.log(this.props);
     return (
       <>
         <div className="col-md-4 mb-5" key={this.props.movie.id}>

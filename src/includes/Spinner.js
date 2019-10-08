@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-export class Parent extends Component {
+class Spinner extends Component {
     render() {
         return (
             <div>
-                {this.props.children}
+                <img src="/spinner.gif" alt="Loading ..."/>
             </div>
         )
     }
 }
 
-export default Parent
+export default Spinner
