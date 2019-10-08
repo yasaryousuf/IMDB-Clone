@@ -3,13 +3,15 @@ import React from 'react';
 import FooterComponent from './includes/Footer';
 import NavbarComponent from './includes/Navbar';
 import Hero from './includes/Hero';
+import Parent from './hoc/Parent';
 
 function App() {
   return (
     <div className="App">
-
-      <NavbarComponent/>
-      <Hero/>
+      <Parent>
+        <NavbarComponent/>
+        <Hero/>
+      </Parent>
 
       <div class="container">
 
