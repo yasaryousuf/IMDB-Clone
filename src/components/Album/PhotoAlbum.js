@@ -12,14 +12,14 @@ export class PhotoAlbum extends Component {
           </div>
         </header>
 
-        <div class="row text-center text-lg-left">
+        <div className="row text-center text-lg-left">
           {this.props.photos
             .filter((item, index) => index < 8)
             .map(photo => (
-              <div class="col-lg-3 col-md-4 col-6" key={photo.id}>
-                <a href="/" class="d-block mb-4 h-100">
+              <div className="col-lg-3 col-md-4 col-6" key={photo.id}>
+                <a href="/" className="d-block mb-4 h-100">
                   <img
-                    class="img-fluid img-thumbnail"
+                    className="img-fluid img-thumbnail"
                     src={`https://image.tmdb.org/t/p/original/${photo.file_path}`}
                     alt=""
                   />

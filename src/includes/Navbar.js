@@ -26,27 +26,27 @@ export class Navbar extends Component {
             </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav ml-auto">
-                <li className={"nav-item" + this.getNavLinkClass("/")}>
+                <li className={"nav-item " + this.getNavLinkClass("/")}>
                   <Link className="nav-link" to="/">
                     Home
                   </Link>
                 </li>
-                <li className={"nav-item" + this.getNavLinkClass("/top-rated")}>
+                <li className={"nav-item " + this.getNavLinkClass("/top-rated")}>
                   <Link className="nav-link" to="/top-rated">
                     Top Rated
                   </Link>
                 </li>
-                <li className={"nav-item" + this.getNavLinkClass("/latest")}>
+                <li className={"nav-item " + this.getNavLinkClass("/latest")}>
                   <Link className="nav-link" to="/latest">
                     Latest
                   </Link>
                 </li>
-                <li className={"nav-item" + this.getNavLinkClass("/popular")}>
+                <li className={"nav-item " + this.getNavLinkClass("/popular")}>
                   <Link className="nav-link" to="/popular">
                     Popular
                   </Link>
                 </li>
-                <li className={"nav-item" + this.getNavLinkClass("/upcoming")}>
+                <li className={"nav-item " + this.getNavLinkClass("/upcoming")}>
                   <Link className="nav-link" to="/upcoming">
                     Upcoming
                   </Link>
