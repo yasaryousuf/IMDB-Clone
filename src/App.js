@@ -13,6 +13,7 @@ import Popular from "./components/Popular";
 import Upcoming from "./components/Upcoming";
 import Home from "./components/Home";
 import SingleMovie from "./components/SingleMovie";
+import CastComponent from "./components/Casts/CastComponent";
 
 class App extends React.Component {
   render() {
@@ -27,6 +28,7 @@ class App extends React.Component {
             <Route path="/latest" component={Latest} />
             <Route path="/popular" component={Popular} />
             <Route path="/upcoming" component={Upcoming} />
+            <Route path="/cast" component={CastComponent} />
             <Route path="/movie/:id" component={SingleMovie} />
           </Switch>
           <FooterComponent />
