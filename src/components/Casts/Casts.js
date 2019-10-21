@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Casts extends Component {
   render() {
@@ -18,17 +19,21 @@ class Casts extends Component {
               .filter((item, index) => index < 8)
               .map(cast => (
                 <div className="col-xl-3 col-md-4 mb-4" key={cast.id}>
-                  <div className="card border-0 shadow">
-                    <img
-                      src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body text-center">
-                      <h5 className="card-title mb-0">{cast.character}</h5>
-                      <div className="card-text text-black-50">{cast.name}</div>
+                  <Link to={`/cast/${cast.id}`}>
+                    <div className="card border-0 shadow">
+                      <img
+                        src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
+                        className="card-img-top"
+                        alt="..."
+                      />
+                      <div className="card-body text-center">
+                        <h5 className="card-title mb-0">{cast.character}</h5>
+                        <div className="card-text text-black-50">
+                          {cast.name}
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
           </div>

@@ -28,7 +28,7 @@ class App extends React.Component {
             <Route path="/latest" component={Latest} />
             <Route path="/popular" component={Popular} />
             <Route path="/upcoming" component={Upcoming} />
-            <Route path="/cast" component={CastComponent} />
+            <Route path="/cast/:id" component={CastComponent} />
             <Route path="/movie/:id" component={SingleMovie} />
           </Switch>
           <FooterComponent />
