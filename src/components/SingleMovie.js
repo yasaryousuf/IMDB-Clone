@@ -4,7 +4,7 @@ import moment from "moment";
 
 import Casts from "./Casts/Casts";
 import PhotoAlbum from "./Album/PhotoAlbum";
-import Spinner from "../includes/Spinner";
+// import Spinner from "../includes/Spinner";
 
 class SingleMovie extends Component {
   state = {
@@ -66,7 +66,9 @@ class SingleMovie extends Component {
           <div className="col-lg-12">
             <div className="row">
               <div className="col-lg-10">
-                <h1 className="mt-4 movie-title">{this.state.movie.original_title}</h1>
+                <h1 className="mt-4 movie-title">
+                  {this.state.movie.original_title}
+                </h1>
               </div>
               <div className="col-lg-2 mt-4">
                 <i className="fa fa-2x fa-star text-warning"></i>{" "}
@@ -80,7 +82,10 @@ class SingleMovie extends Component {
             <p className="lead">
               {this.state.movie.genres
                 ? this.state.movie.genres.map(genre => (
-                    <span className="badge badge-primary ml-1 tag" key={genre.id}>
+                    <span
+                      className="badge badge-primary ml-1 tag"
+                      key={genre.id}
+                    >
                       {genre.name} <span> </span>
                     </span>
                   ))
