@@ -6,3 +6,6 @@ a:hover {
 a {
   color: #300d4f;
 }
+.border-bottom {
+  border-bottom: 0px solid #dee2e6 !important;
+}

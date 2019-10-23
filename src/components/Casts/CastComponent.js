@@ -73,7 +73,7 @@ export class CastComponent extends Component {
               <div className="col-xl-3 col-lg-3">
                 <div className="bg-white p-3 widget shadow rounded mb-4">
                   <img
-                    src={`https://image.tmdb.org/t/p/original/${this.state.people.profile_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${this.state.people.profile_path}`}
                     className="img-fluid rounded"
                     alt="..."
                   />
@@ -178,7 +178,7 @@ export class CastComponent extends Component {
                     {this.state.movie_credits
                       .filter((item, index) => index < 12)
                       .map(movie => (
-                        <div className="col-xl-2 col-md-6" key={movie.id}>
+                        <div className="col-xl-3 col-md-6" key={movie.id}>
                           <div className="card m-card shadow border-0 mb-3">
                             <Link to={`/movie/${movie.id}`}>
                               <div className="m-card-cover">
@@ -193,7 +193,7 @@ export class CastComponent extends Component {
                                   </small>
                                 </div>
                                 <img
-                                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                                   className="card-img-top"
                                   alt="..."
                                 />
@@ -225,7 +225,7 @@ export class CastComponent extends Component {
                       <a href="/" class="d-block mb-4 h-100">
                         <img
                           class="img-fluid img-thumbnail"
-                          src="https://image.tmdb.org/t/p/original//6ToVeBxxJVMbXnLktGcuTuALcxU.jpg"
+                          src="https://image.tmdb.org/t/p/w500//6ToVeBxxJVMbXnLktGcuTuALcxU.jpg"
                           alt=""
                         />
                       </a>

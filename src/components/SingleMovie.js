@@ -50,7 +50,7 @@ class SingleMovie extends Component {
           )
           .then(response => {
             this.setState({
-              photos: response.data.posters
+              photos: response.data.backdrops
             });
           });
       });
