@@ -1,21 +1,24 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./CastComponent.css";
+import { Link } from "react-router-dom";
 
 export class CastComponent extends Component {
   state = {
     people: [],
     movie_credits: [],
-    external_ids: {}
+    external_ids: {},
+    images: []
   };
   componentDidMount() {
+    let params = {
+      api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
+    };
     axios
       .get(
         `https://api.themoviedb.org/3/person/${this.props.match.params.id}`,
         {
-          params: {
-            api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
-          }
+          params
         }
       )
       .then(response => {
@@ -26,9 +29,7 @@ export class CastComponent extends Component {
           .get(
             `https://api.themoviedb.org/3/person/${this.props.match.params.id}/movie_credits`,
             {
-              params: {
-                api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
-              }
+              params
             }
           )
           .then(response => {
@@ -40,14 +41,25 @@ export class CastComponent extends Component {
           .get(
             `https://api.themoviedb.org/3/person/${this.props.match.params.id}/external_ids`,
             {
-              params: {
-                api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
-              }
+              params
             }
           )
           .then(response => {
             this.setState({
               external_ids: response.data
+            });
+          });
+        axios
+          .get(
+            `https://api.themoviedb.org/3/person/${this.props.match.params.id}/images`,
+            {
+              params
+            }
+          )
+          .then(response => {
+            console.log(response);
+            this.setState({
+              images: response.data.profiles
             });
           });
       });
@@ -81,11 +93,11 @@ export class CastComponent extends Component {
                     {this.state.people.popularity}
                   </p>
                   <p className="mb-2">
-                    <i className="fa fa-calendar-alt fa-fw"></i> Date of Birth -
+                    <i className="fa fa-calendar fa-fw"></i> Date of Birth -
                     {this.state.people.birthday}
                   </p>
                   <p className="mb-2">
-                    <i className="fa fa-map-marker-alt fa-fw"></i>{" "}
+                    <i className="fa fa-map-marker fa-fw"></i>{" "}
                     {this.state.people.place_of_birth}
                   </p>
                 </div>
@@ -164,11 +176,11 @@ export class CastComponent extends Component {
                   </h1>
                   <div className="row">
                     {this.state.movie_credits
-                      .filter((item, index) => index < 8)
+                      .filter((item, index) => index < 12)
                       .map(movie => (
-                        <div className="col-xl-3 col-md-6" key={movie.id}>
+                        <div className="col-xl-2 col-md-6" key={movie.id}>
                           <div className="card m-card shadow border-0 mb-3">
-                            <a href="movies-detail.html">
+                            <Link to={`/movie/${movie.id}`}>
                               <div className="m-card-cover">
                                 <div className="position-absolute bg-white shadow-sm rounded text-center p-2 m-2 love-box">
                                   <h6 className="text-gray-900 mb-0 font-weight-bold">
@@ -198,10 +210,26 @@ export class CastComponent extends Component {
                                   </small>
                                 </p>
                               </div>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       ))}
+                  </div>
+                </div>
+                <div className="bg-white p-3 widget shadow rounded mb-4">
+                  <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
+                    Biography
+                  </h1>
+                  <div class="row text-center text-lg-left">
+                    <div class="col-lg-3 col-md-4 col-6">
+                      <a href="/" class="d-block mb-4 h-100">
+                        <img
+                          class="img-fluid img-thumbnail"
+                          src="https://image.tmdb.org/t/p/original//6ToVeBxxJVMbXnLktGcuTuALcxU.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
