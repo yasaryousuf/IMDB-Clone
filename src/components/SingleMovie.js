@@ -4,62 +4,58 @@ import moment from "moment";
 
 import Casts from "./Casts/Casts";
 import PhotoAlbum from "./Album/PhotoAlbum";
+import MovieAlbum from "./Album/MovieAlbum";
 // import Spinner from "../includes/Spinner";
+
+import "./SingleMovie.css";
 
 class SingleMovie extends Component {
   state = {
     isLoading: true,
     movie: {},
     casts: [],
-    photos: []
+    photos: [],
+    recommendations: [],
+    similar_movies: []
   };
   componentDidMount() {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/${this.props.match.params.id}`, {
-        params: {
-          api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
-        }
-      })
-      .then(response => {
-        this.setState({
-          isLoading: false,
-          movie: response.data
-        });
-        axios
-          .get(
-            `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/credits`,
-            {
-              params: {
-                api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
-              }
-            }
-          )
-          .then(response => {
-            this.setState({
-              casts: response.data.cast
-            });
-          });
-        axios
-          .get(
-            `https://api.themoviedb.org/3/movie/${this.props.match.params.id}/images`,
-            {
-              params: {
-                api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
-              }
-            }
-          )
-          .then(response => {
-            this.setState({
-              photos: response.data.backdrops
-            });
-          });
+    let url = `https://api.themoviedb.org/3/movie/${this.props.match.params.id}`;
+    let params = {
+      api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
+    };
+    axios.get(`${url}`, { params }).then(response => {
+      this.setState({
+        isLoading: false,
+        movie: response.data
       });
+      axios.get(`${url}/credits`, { params }).then(response => {
+        this.setState({
+          casts: response.data.cast
+        });
+      });
+      axios.get(`${url}/images`, { params }).then(response => {
+        this.setState({
+          photos: response.data.backdrops
+        });
+      });
+      axios.get(`${url}/recommendations`, { params }).then(response => {
+        this.setState({
+          recommendations: response.data.results
+        });
+      });
+      axios.get(`${url}/similar`, { params }).then(response => {
+        this.setState({
+          similar_movies: response.data.results
+        });
+      });
+    });
   }
 
   yy_date_format(date) {
     return moment(date, "YYY-MM-DD").format("dddd, MMMM Do YYYY");
   }
   render() {
+    document.title = this.state.movie.original_title;
     return (
       <div className="container">
         <div className="row">
@@ -94,10 +90,20 @@ class SingleMovie extends Component {
             <table className="table table-borderless">
               <tbody>
                 <tr>
-                  <td>{this.state.movie.adult ? "R" : "PG"}</td>
-                  <td>{this.state.movie.runtime} minutes</td>
-                  <td>{this.state.movie.status}</td>
-                  <td>{this.yy_date_format(this.state.movie.release_date)}</td>
+                  <td>
+                    <span>{this.state.movie.adult ? "R" : "PG"}</span>
+                  </td>
+                  <td>
+                    <span>{this.state.movie.runtime} minutes</span>
+                  </td>
+                  <td>
+                    <span>{this.state.movie.status}</span>
+                  </td>
+                  <td>
+                    <span>
+                      {this.yy_date_format(this.state.movie.release_date)}
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -119,6 +125,22 @@ class SingleMovie extends Component {
 
             <PhotoAlbum photos={this.state.photos} />
             <Casts casts={this.state.casts} />
+            <div class="bg-white p-3 widget shadow rounded mb-4">
+              <h1 class="h6 mb-3 mt-0 font-weight-bold text-gray-900">
+                Recommendations
+              </h1>
+              <div class="row">
+                <MovieAlbum movies={this.state.recommendations} />
+              </div>
+            </div>
+            <div class="bg-white p-3 widget shadow rounded mb-4">
+              <h1 class="h6 mb-3 mt-0 font-weight-bold text-gray-900">
+                Similar Movies
+              </h1>
+              <div class="row">
+                <MovieAlbum movies={this.state.similar_movies} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

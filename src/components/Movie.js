@@ -14,7 +14,11 @@ export class Movie extends Component {
             />
             <div className="card-body">
               <h4 className="card-title">{this.props.movie.title}</h4>
-              <p className="card-text">{this.props.movie.overview}</p>
+              <p className="card-text">
+                {this.props.movie.overview.length > 150
+                  ? this.props.movie.overview.substring(0, 100) + "..."
+                  : this.props.movie.overview}
+              </p>
               <Link
                 to={`/movie/${this.props.movie.id}`}
                 className="btn btn-primary"

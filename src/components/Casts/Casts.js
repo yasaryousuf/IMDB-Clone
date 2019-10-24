@@ -18,7 +18,7 @@ class Casts extends Component {
             {this.props.casts
               .filter((item, index) => index < 8)
               .map(cast => (
-                <div className="col-xl-2 col-md-4 mb-4" key={cast.id}>
+                <div className="col-xl-3 col-md-4 mb-4" key={cast.id}>
                   <Link to={`/cast/${cast.id}`}>
                     <div className="card border-0 shadow">
                       <img
