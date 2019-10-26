@@ -18,7 +18,8 @@ class SingleMovie extends Component {
     recommendations: [],
     similar_movies: []
   };
-  componentDidMount() {
+
+  movieData = () => {
     let url = `https://api.themoviedb.org/3/movie/${this.props.match.params.id}`;
     let params = {
       api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
@@ -49,7 +50,13 @@ class SingleMovie extends Component {
         });
       });
     });
+  };
+  componentDidMount() {
+    this.movieData();
   }
+  // componentWillReceiveProps() {
+  //   this.movieData();
+  // }
 
   yy_date_format(date) {
     return moment(date, "YYY-MM-DD").format("dddd, MMMM Do YYYY");
@@ -125,19 +132,19 @@ class SingleMovie extends Component {
 
             <PhotoAlbum photos={this.state.photos} />
             <Casts casts={this.state.casts} />
-            <div class="bg-white p-3 widget shadow rounded mb-4">
-              <h1 class="h6 mb-3 mt-0 font-weight-bold text-gray-900">
+            <div className="bg-white p-3 widget shadow rounded mb-4">
+              <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
                 Recommendations
               </h1>
-              <div class="row">
+              <div className="row">
                 <MovieAlbum movies={this.state.recommendations} />
               </div>
             </div>
-            <div class="bg-white p-3 widget shadow rounded mb-4">
-              <h1 class="h6 mb-3 mt-0 font-weight-bold text-gray-900">
+            <div className="bg-white p-3 widget shadow rounded mb-4">
+              <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
                 Similar Movies
               </h1>
-              <div class="row">
+              <div className="row">
                 <MovieAlbum movies={this.state.similar_movies} />
               </div>
             </div>

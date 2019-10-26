@@ -6,7 +6,7 @@ export class MovieAlbum extends Component {
     return (
       <>
         {this.props.movies.map(movie => (
-          <div class="col-xl-3 col-md-6">
+          <div class="col-xl-3 col-md-6" key={movie.id}>
             <div class="card m-card shadow border-0 mb-3">
               <Link to={`/movie/${movie.id}`}>
                 <div class="m-card-cover">
