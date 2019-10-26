@@ -220,11 +220,11 @@ export class CastComponent extends Component {
                   <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
                     Biography
                   </h1>
-                  <div class="row text-center text-lg-left">
-                    <div class="col-lg-3 col-md-4 col-6">
-                      <a href="/" class="d-block mb-4 h-100">
+                  <div className="row text-center text-lg-left">
+                    <div className="col-lg-3 col-md-4 col-6">
+                      <a href="/" className="d-block mb-4 h-100">
                         <img
-                          class="img-fluid img-thumbnail"
+                          className="img-fluid img-thumbnail"
                           src="https://image.tmdb.org/t/p/w500//6ToVeBxxJVMbXnLktGcuTuALcxU.jpg"
                           alt=""
                         />

@@ -22,7 +22,7 @@ class Casts extends Component {
                   <Link to={`/cast/${cast.id}`}>
                     <div className="card border-0 shadow">
                       <img
-                        src={`https://image.tmdb.org/t/p/original/${cast.profile_path}`}
+                        src={`https://image.tmdb.org/t/p/w300/${cast.profile_path}`}
                         className="card-img-top"
                         alt="..."
                       />

@@ -19,8 +19,8 @@ class SingleMovie extends Component {
     similar_movies: []
   };
 
-  movieData = () => {
-    let url = `https://api.themoviedb.org/3/movie/${this.props.match.params.id}`;
+  movieData = id => {
+    let url = `https://api.themoviedb.org/3/movie/${id}`;
     let params = {
       api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
     };
@@ -52,11 +52,14 @@ class SingleMovie extends Component {
     });
   };
   componentDidMount() {
-    this.movieData();
+    this.movieData(this.props.match.params.id);
   }
-  // componentWillReceiveProps() {
-  //   this.movieData();
-  // }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.id !== nextProps.match.params.id) {
+      this.movieData(nextProps.match.params.id);
+    }
+  }
 
   yy_date_format(date) {
     return moment(date, "YYY-MM-DD").format("dddd, MMMM Do YYYY");
@@ -116,7 +119,7 @@ class SingleMovie extends Component {
             </table>
             <img
               className="img-fluid rounded"
-              src={`https://image.tmdb.org/t/p/original/${this.state.movie.backdrop_path}`}
+              src={`https://image.tmdb.org/t/p/w300/${this.state.movie.backdrop_path}`}
               alt=""
             />
             <p

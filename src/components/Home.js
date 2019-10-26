@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Movie from "./Movie";
+import Loader from "../includes/Loader";
 
 export class Home extends Component {
   state = {
-    movies: []
+    movies: [],
+    isLoading: true
   };
   componentDidMount() {
     axios
@@ -16,7 +18,8 @@ export class Home extends Component {
       })
       .then(response => {
         this.setState({
-          movies: response.data.results
+          movies: response.data.results,
+          isLoading: false
         });
       });
   }
@@ -25,9 +28,11 @@ export class Home extends Component {
     return (
       <div>
         <div className="container">
-          <div className="row">
-            {MovieEl}
-          </div>
+          {this.state.isLoading ? (
+            <Loader />
+          ) : (
+            <div className="row">{MovieEl}</div>
+          )}
         </div>
       </div>
     );

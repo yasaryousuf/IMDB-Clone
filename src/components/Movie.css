@@ -1,0 +1,22 @@
+.card-img-overlay > h6,
+.card-img-overlay > p,
+.card-img-overlay > a {
+  visibility: hidden;
+}
+
+.card-img-overlay:hover h6,
+.card-img-overlay:hover p,
+.card-img-overlay > a {
+  transition-duration: 2s;
+  visibility: visible;
+}
+
+.card {
+  color: white;
+}
+
+.card:hover {
+  color: white;
+  filter: brightness(50%);
+  transition-duration: 1s;
+}

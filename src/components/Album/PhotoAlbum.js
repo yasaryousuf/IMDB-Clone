@@ -20,7 +20,7 @@ export class PhotoAlbum extends Component {
                 <a href="/" className="d-block mb-4 h-100">
                   <img
                     className="img-fluid img-thumbnail"
-                    src={`https://image.tmdb.org/t/p/original/${photo.file_path}`}
+                    src={`https://image.tmdb.org/t/p/w300/${photo.file_path}`}
                     alt=""
                   />
                 </a>

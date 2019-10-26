@@ -4,7 +4,7 @@ export class Hero extends Component {
   render() {
     return (
       <>
-        <header className="yy-bg-primary py-5 mb-5">
+        <header className="yy-bg-primary py-5">
           <div className="container h-100">
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
