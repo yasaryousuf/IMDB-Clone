@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Casts extends Component {
+  handleHover = () => {
+    this.setState(prevState => ({
+      isHovered: !prevState.isHovered
+    }));
+  };
+
   render() {
     return (
       <>
@@ -16,9 +22,9 @@ class Casts extends Component {
         <div className="container">
           <div className="row">
             {this.props.casts
-              .filter((item, index) => index < 8)
+              .filter((item, index) => index < 12)
               .map(cast => (
-                <div className="col-xl-3 col-md-4 mb-4" key={cast.id}>
+                <div className="col-xl-2 col-md-4 mb-4" key={cast.id}>
                   <Link to={`/cast/${cast.id}`}>
                     <div className="card border-0 shadow">
                       <img
@@ -26,8 +32,15 @@ class Casts extends Component {
                         className="card-img-top"
                         alt="..."
                       />
-                      <div className="card-body text-center">
-                        <h5 className="card-title mb-0">{cast.character}</h5>
+                      <div
+                        className="card-body text-center"
+                        style={{ padding: ".5rem" }}
+                      >
+                        <h6 className="card-title mb-0">
+                          {cast.character.includes("/")
+                            ? cast.character.split("/")[1]
+                            : cast.character}
+                        </h6>
                         <div className="card-text text-black-50">
                           {cast.name}
                         </div>

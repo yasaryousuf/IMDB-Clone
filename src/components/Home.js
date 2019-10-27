@@ -4,6 +4,8 @@ import axios from "axios";
 import Movie from "./Movie";
 import Loader from "../includes/Loader";
 
+import { API_KEY, API_URL } from "../data/config";
+
 export class Home extends Component {
   state = {
     movies: [],
@@ -11,9 +13,9 @@ export class Home extends Component {
   };
   componentDidMount() {
     axios
-      .get("https://api.themoviedb.org/3/movie/popular", {
+      .get(`${API_URL}/movie/popular`, {
         params: {
-          api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
+          api_key: API_KEY
         }
       })
       .then(response => {
@@ -28,11 +30,11 @@ export class Home extends Component {
     return (
       <div>
         <div className="container">
-          {this.state.isLoading ? (
-            <Loader />
-          ) : (
-            <div className="row">{MovieEl}</div>
-          )}
+          <div class="bg-white p-3 widget shadow rounded mb-4">
+            <div class="row">
+              {this.state.isLoading ? <Loader /> : <>{MovieEl}</>}
+            </div>
+          </div>
         </div>
       </div>
     );

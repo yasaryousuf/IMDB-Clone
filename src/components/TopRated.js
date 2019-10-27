@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 import Movie from "./Movie";
+import Loader from "../includes/Loader";
+
+import { API_KEY, API_URL } from "../data/config";
 
 export class TopRated extends Component {
   state = {
-    movies: []
+    movies: [],
+    isLoading: true
   };
   componentDidMount() {
     axios
-      .get("https://api.themoviedb.org/3/movie/top_rated", {
+      .get(`${API_URL}/movie/top_rated`, {
         params: {
-          api_key: "8c5471fbc2d36272d770ef8db13e2dd7"
+          api_key: API_KEY
         }
       })
       .then(response => {
         this.setState({
-          movies: response.data.results
+          movies: response.data.results,
+          isLoading: false
         });
       });
   }
@@ -24,7 +30,11 @@ export class TopRated extends Component {
     return (
       <div>
         <div className="container">
-          <div className="row">{MovieEl}</div>
+          <div class="bg-white p-3 widget shadow rounded mb-4">
+            <div class="row">
+              {this.state.isLoading ? <Loader /> : <>{MovieEl}</>}
+            </div>
+          </div>
         </div>
       </div>
     );

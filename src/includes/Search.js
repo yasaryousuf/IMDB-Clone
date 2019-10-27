@@ -5,8 +5,7 @@ import "./Search.css";
 export class Search extends Component {
   render() {
     return (
-      <div className="container mb-5">
-        <br />
+      <div className="container my-4">
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-8">
             <form className="card card-sm">

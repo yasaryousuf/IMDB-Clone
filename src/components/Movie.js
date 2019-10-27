@@ -3,30 +3,41 @@ import { Link } from "react-router-dom";
 import "./Movie.css";
 
 export class Movie extends Component {
+  state = {
+    darker: {}
+  };
+
+  handleHover = () => {
+    this.setState(prevState => ({
+      isHovered: !prevState.isHovered
+    }));
+  };
+
   render() {
+    const btnClass = this.state.isHovered ? "dark" : "";
     return (
       <>
-        <div className="col-md-3 mb-5" key={this.props.movie.id}>
+        <div className="col-md-3 mb-2" key={this.props.movie.id}>
           <div className="card h-100">
             <img
-              className="card-img-top"
+              className={`card-img-top ${btnClass}`}
               src={`https://image.tmdb.org/t/p/w300/${this.props.movie.poster_path}`}
               alt=""
             />
-            <div className="card-img-overlay">
-              <h6 className="card-title">{this.props.movie.title}</h6>
-              <p className="card-text">
-                {this.props.movie.overview.length > 150
-                  ? this.props.movie.overview.substring(0, 100) + "..."
-                  : this.props.movie.overview}
-              </p>
-              <Link
-                to={`/movie/${this.props.movie.id}`}
-                className="btn btn-primary"
+            <Link to={`/movie/${this.props.movie.id}`} title="Click for more">
+              <div
+                className="card-img-overlay"
+                onMouseEnter={this.handleHover}
+                onMouseLeave={this.handleHover}
               >
-                Find Out More!
-              </Link>
-            </div>
+                <h6 className="card-title">{this.props.movie.title}</h6>
+                <p className="card-text">
+                  {this.props.movie.overview.length > 150
+                    ? this.props.movie.overview.substring(0, 100) + "..."
+                    : this.props.movie.overview}
+                </p>
+              </div>
+            </Link>
           </div>
         </div>
       </>

@@ -2,6 +2,7 @@
 .card-img-overlay > p,
 .card-img-overlay > a {
   visibility: hidden;
+  color: white;
 }
 
 .card-img-overlay:hover h6,
@@ -11,12 +12,12 @@
   visibility: visible;
 }
 
-.card {
+.card .card-img-overlay {
   color: white;
 }
 
-.card:hover {
+.dark {
   color: white;
-  filter: brightness(50%);
+  filter: brightness(30%);
   transition-duration: 1s;
 }
