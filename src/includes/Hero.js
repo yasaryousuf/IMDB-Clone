@@ -9,7 +9,7 @@ export class Hero extends Component {
             <div className="row h-100 align-items-center">
               <div className="col-lg-12">
                 <h1 className="display-4 yy-hero-header-text mt-5 mb-2">
-                  Business Name or Tagline
+                  The Movie Database
                 </h1>
                 <p className="lead mb-5 yy-hero-text">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non
