@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Movie from "./Movie";
+import Movie from "../Movie";
 
-export class Recommendation extends Component {
+export class Biography extends Component {
   state = {
     maxShowItem: 8
   };
@@ -17,11 +17,9 @@ export class Recommendation extends Component {
     return (
       <div>
         <div className="bg-white p-3 widget shadow rounded mb-4">
-          <div className="row">
+          <div className="row mb-3">
             <div className="col-md-6">
-              <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
-                Recommendations
-              </h1>
+              <h1 className="h6 font-weight-bold text-gray-900">Biography</h1>
             </div>
             <div className="col-md-6">
               <button
@@ -34,7 +32,7 @@ export class Recommendation extends Component {
             </div>
           </div>
           <div className="row">
-            {this.props.recommendations.map((movie, index) => (
+            {this.props.biographies.map((movie, index) => (
               <Movie
                 movie={movie}
                 index={index}
@@ -48,4 +46,4 @@ export class Recommendation extends Component {
   }
 }
 
-export default Recommendation;
+export default Biography;

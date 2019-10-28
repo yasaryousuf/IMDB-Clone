@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+
+import Biography from "./Biography";
+import PhotoAlbum from "../Album/PhotoAlbum";
+
 import "./CastComponent.css";
-import { Link } from "react-router-dom";
 
 export class CastComponent extends Component {
   state = {
@@ -57,7 +60,6 @@ export class CastComponent extends Component {
             }
           )
           .then(response => {
-            console.log(response);
             this.setState({
               images: response.data.profiles
             });
@@ -66,7 +68,7 @@ export class CastComponent extends Component {
   }
   render() {
     return (
-      <div id="content-wrapper" className="d-flex flex-column">
+      <div id="content-wrapper" className="d-flex flex-column mt-5">
         <div id="content">
           <div className="container-fluid">
             <div className="row">
@@ -170,68 +172,9 @@ export class CastComponent extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="bg-white p-3 widget shadow rounded mb-4">
-                  <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
-                    Biography
-                  </h1>
-                  <div className="row">
-                    {this.state.movie_credits
-                      .filter((item, index) => index < 12)
-                      .map(movie => (
-                        <div className="col-xl-3 col-md-6" key={movie.id}>
-                          <div className="card m-card shadow border-0 mb-3">
-                            <Link to={`/movie/${movie.id}`}>
-                              <div className="m-card-cover">
-                                <div className="position-absolute bg-white shadow-sm rounded text-center p-2 m-2 love-box">
-                                  <h6 className="text-gray-900 mb-0 font-weight-bold">
-                                    <i className="fa fa-star text-warning"></i>{" "}
-                                    {movie.vote_average}
-                                  </h6>
-                                  <small className="text-muted">
-                                    <i className="fa fa-fire text-warning"></i>{" "}
-                                    {movie.vote_count}
-                                  </small>
-                                </div>
-                                <img
-                                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                                  className="card-img-top"
-                                  alt="..."
-                                />
-                              </div>
-                              <div className="card-body p-3">
-                                <h5 className="card-title text-gray-900 mb-1">
-                                  {movie.title}
-                                </h5>
-                                <p className="card-text">
-                                  <small>
-                                    {movie.overview.length > 100
-                                      ? movie.overview.substring(0, 100) + "..."
-                                      : movie.overview}
-                                  </small>
-                                </p>
-                              </div>
-                            </Link>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-                <div className="bg-white p-3 widget shadow rounded mb-4">
-                  <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
-                    Biography
-                  </h1>
-                  <div className="row text-center text-lg-left">
-                    <div className="col-lg-3 col-md-4 col-6">
-                      <a href="/" className="d-block mb-4 h-100">
-                        <img
-                          className="img-fluid img-thumbnail"
-                          src="https://image.tmdb.org/t/p/w500//6ToVeBxxJVMbXnLktGcuTuALcxU.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
+
+                <PhotoAlbum photos={this.state.images} />
+                <Biography biographies={this.state.movie_credits} />
               </div>
             </div>
           </div>

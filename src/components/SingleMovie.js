@@ -4,11 +4,9 @@ import moment from "moment";
 
 import Casts from "./Casts/Casts";
 import PhotoAlbum from "./Album/PhotoAlbum";
-import MovieAlbum from "./Album/MovieAlbum";
 import Recommendation from "./Recommendation";
 
 import { API_KEY, API_URL } from "../data/config";
-// import Spinner from "../includes/Spinner";
 
 import "./SingleMovie.css";
 import SimilarMovies from "./SimilarMovies";

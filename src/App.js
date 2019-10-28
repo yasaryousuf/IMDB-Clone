@@ -6,7 +6,6 @@ import "./App.css";
 import FooterComponent from "./includes/Footer";
 import NavbarComponent from "./includes/Navbar";
 import Hero from "./includes/Hero";
-import Search from "./includes/Search";
 
 import TopRated from "./components/TopRated";
 import Latest from "./components/Latest";
@@ -23,7 +22,6 @@ class App extends React.Component {
         <div className="App">
           <NavbarComponent />
           <Hero />
-          <Search />
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/top-rated" component={TopRated} />

@@ -10,7 +10,7 @@ export class SimilarMovies extends Component {
   handleShowAll = () => {
     console.log("sfs");
     this.setState(prevState => ({
-      maxShowItem: prevState.maxShowItem == 8 ? 20 : 8
+      maxShowItem: prevState.maxShowItem === 8 ? 20 : 8
     }));
   };
 
@@ -30,7 +30,7 @@ export class SimilarMovies extends Component {
                 className="btn btn-outline-info btn-sm pull-right"
                 onClick={this.handleShowAll}
               >
-                See all
+                {this.state.maxShowItem === 8 ? "See all" : "See less"}
               </button>
             </div>
           </div>
