@@ -4,7 +4,8 @@ import "./Movie.css";
 
 export class Movie extends Component {
   state = {
-    darker: {}
+    isHovered: false,
+    showAll: false
   };
 
   handleHover = () => {
@@ -15,9 +16,11 @@ export class Movie extends Component {
 
   render() {
     const btnClass = this.state.isHovered ? "dark" : "";
+    const isVisible =
+      this.props.index >= this.props.maxShowItem ? "d-none" : "";
     return (
       <>
-        <div className="col-md-3 mb-2" key={this.props.movie.id}>
+        <div className={`col-md-3 mb-2 ${isVisible}`} key={this.props.movie.id}>
           <div className="card h-100">
             <img
               className={`card-img-top ${btnClass}`}

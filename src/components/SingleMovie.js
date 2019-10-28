@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
 
-import Movie from "./Movie";
 import Casts from "./Casts/Casts";
 import PhotoAlbum from "./Album/PhotoAlbum";
 import MovieAlbum from "./Album/MovieAlbum";
+import Recommendation from "./Recommendation";
 
 import { API_KEY, API_URL } from "../data/config";
 // import Spinner from "../includes/Spinner";
 
 import "./SingleMovie.css";
+import SimilarMovies from "./SimilarMovies";
 
 class SingleMovie extends Component {
   state = {
@@ -138,25 +139,8 @@ class SingleMovie extends Component {
 
             <PhotoAlbum photos={this.state.photos} />
             <Casts casts={this.state.casts} />
-            <div className="bg-white p-3 widget shadow rounded mb-4">
-              <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
-                Recommendations
-              </h1>
-              <div className="row">
-                {this.state.recommendations.map(movie => (
-                  <Movie movie={movie} />
-                ))}
-                {/* <MovieAlbum movies={this.state.recommendations} /> */}
-              </div>
-            </div>
-            <div className="bg-white p-3 widget shadow rounded mb-4">
-              <h1 className="h6 mb-3 mt-0 font-weight-bold text-gray-900">
-                Similar Movies
-              </h1>
-              <div className="row">
-                <MovieAlbum movies={this.state.similar_movies} />
-              </div>
-            </div>
+            <Recommendation recommendations={this.state.recommendations} />
+            <SimilarMovies similar_movies={this.state.similar_movies} />
           </div>
         </div>
       </div>
