@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import moment from "moment";
 
+import Movie from "./Movie";
 import Casts from "./Casts/Casts";
 import PhotoAlbum from "./Album/PhotoAlbum";
 import MovieAlbum from "./Album/MovieAlbum";
@@ -142,7 +143,10 @@ class SingleMovie extends Component {
                 Recommendations
               </h1>
               <div className="row">
-                <MovieAlbum movies={this.state.recommendations} />
+                {this.state.recommendations.map(movie => (
+                  <Movie movie={movie} />
+                ))}
+                {/* <MovieAlbum movies={this.state.recommendations} /> */}
               </div>
             </div>
             <div className="bg-white p-3 widget shadow rounded mb-4">

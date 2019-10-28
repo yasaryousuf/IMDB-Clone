@@ -1,0 +1,12 @@
+.cast a:hover {
+  text-decoration: none;
+  color: #300d4f;
+}
+.cast a {
+  text-decoration: none;
+  color: #300d4f;
+}
+
+.cast .card-img-top:hover {
+  filter: blur();
+}

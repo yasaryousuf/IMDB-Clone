@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+
+import Cast from "./Cast";
 
 class Casts extends Component {
-  handleHover = () => {
-    this.setState(prevState => ({
-      isHovered: !prevState.isHovered
-    }));
-  };
-
   render() {
     return (
       <>
@@ -19,37 +14,14 @@ class Casts extends Component {
           </div>
         </header>
 
-        <div className="container">
-          <div className="row">
-            {this.props.casts
-              .filter((item, index) => index < 12)
-              .map(cast => (
-                <div className="col-xl-2 col-md-4 mb-4" key={cast.id}>
-                  <Link to={`/cast/${cast.id}`}>
-                    <div className="card border-0 shadow">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w300/${cast.profile_path}`}
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div
-                        className="card-body text-center"
-                        style={{ padding: ".5rem" }}
-                      >
-                        <h6 className="card-title mb-0">
-                          {cast.character.includes("/")
-                            ? cast.character.split("/")[1]
-                            : cast.character}
-                        </h6>
-                        <div className="card-text text-black-50">
-                          {cast.name}
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-          </div>
+        <div className="row">
+          {this.props.casts
+            .filter((item, index) => index < 12)
+            .map(cast => (
+              <>
+                <Cast cast={cast} />
+              </>
+            ))}
         </div>
       </>
     );
